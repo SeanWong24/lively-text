@@ -5,57 +5,43 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { TextSegment } from "./utils/text-segment";
 export namespace Components {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first": string;
-        /**
-          * The last name
-         */
-        "last": string;
-        /**
-          * The middle name
-         */
-        "middle": string;
+    interface AwesomeTextHighlight {
+        "text": string;
+        "textSegmentMatchRegExp": RegExp;
     }
 }
+export interface AwesomeTextHighlightCustomEvent<T> extends CustomEvent<T> {
+    detail: T;
+    target: HTMLAwesomeTextHighlightElement;
+}
 declare global {
-    interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
+    interface HTMLAwesomeTextHighlightElement extends Components.AwesomeTextHighlight, HTMLStencilElement {
     }
-    var HTMLMyComponentElement: {
-        prototype: HTMLMyComponentElement;
-        new (): HTMLMyComponentElement;
+    var HTMLAwesomeTextHighlightElement: {
+        prototype: HTMLAwesomeTextHighlightElement;
+        new (): HTMLAwesomeTextHighlightElement;
     };
     interface HTMLElementTagNameMap {
-        "my-component": HTMLMyComponentElement;
+        "awesome-text-highlight": HTMLAwesomeTextHighlightElement;
     }
 }
 declare namespace LocalJSX {
-    interface MyComponent {
-        /**
-          * The first name
-         */
-        "first"?: string;
-        /**
-          * The last name
-         */
-        "last"?: string;
-        /**
-          * The middle name
-         */
-        "middle"?: string;
+    interface AwesomeTextHighlight {
+        "onTextSegmentsGenerated"?: (event: AwesomeTextHighlightCustomEvent<TextSegment[]>) => void;
+        "text"?: string;
+        "textSegmentMatchRegExp"?: RegExp;
     }
     interface IntrinsicElements {
-        "my-component": MyComponent;
+        "awesome-text-highlight": AwesomeTextHighlight;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
+            "awesome-text-highlight": LocalJSX.AwesomeTextHighlight & JSXBase.HTMLAttributes<HTMLAwesomeTextHighlightElement>;
         }
     }
 }
