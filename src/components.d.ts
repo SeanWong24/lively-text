@@ -7,41 +7,41 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { TextSegment } from "./utils/text-segment";
 export namespace Components {
-    interface AwesomeTextHighlight {
+    interface AwesomeLivelyText {
         "text": string;
         "textSegmentMatchRegExp": RegExp;
     }
 }
-export interface AwesomeTextHighlightCustomEvent<T> extends CustomEvent<T> {
+export interface AwesomeLivelyTextCustomEvent<T> extends CustomEvent<T> {
     detail: T;
-    target: HTMLAwesomeTextHighlightElement;
+    target: HTMLAwesomeLivelyTextElement;
 }
 declare global {
-    interface HTMLAwesomeTextHighlightElement extends Components.AwesomeTextHighlight, HTMLStencilElement {
+    interface HTMLAwesomeLivelyTextElement extends Components.AwesomeLivelyText, HTMLStencilElement {
     }
-    var HTMLAwesomeTextHighlightElement: {
-        prototype: HTMLAwesomeTextHighlightElement;
-        new (): HTMLAwesomeTextHighlightElement;
+    var HTMLAwesomeLivelyTextElement: {
+        prototype: HTMLAwesomeLivelyTextElement;
+        new (): HTMLAwesomeLivelyTextElement;
     };
     interface HTMLElementTagNameMap {
-        "awesome-text-highlight": HTMLAwesomeTextHighlightElement;
+        "awesome-lively-text": HTMLAwesomeLivelyTextElement;
     }
 }
 declare namespace LocalJSX {
-    interface AwesomeTextHighlight {
-        "onTextSegmentsGenerated"?: (event: AwesomeTextHighlightCustomEvent<TextSegment[]>) => void;
+    interface AwesomeLivelyText {
+        "onTextSegmentsGenerated"?: (event: AwesomeLivelyTextCustomEvent<TextSegment[]>) => void;
         "text"?: string;
         "textSegmentMatchRegExp"?: RegExp;
     }
     interface IntrinsicElements {
-        "awesome-text-highlight": AwesomeTextHighlight;
+        "awesome-lively-text": AwesomeLivelyText;
     }
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
-            "awesome-text-highlight": LocalJSX.AwesomeTextHighlight & JSXBase.HTMLAttributes<HTMLAwesomeTextHighlightElement>;
+            "awesome-lively-text": LocalJSX.AwesomeLivelyText & JSXBase.HTMLAttributes<HTMLAwesomeLivelyTextElement>;
         }
     }
 }

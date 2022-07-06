@@ -2,26 +2,17 @@ import { Component, Host, h, ComponentInterface, Prop, State, Event, EventEmitte
 import { obtainTextSegments, TextSegment } from '../../utils/text-segment';
 
 @Component({
-  tag: 'awesome-text-highlight',
-  styleUrl: 'awesome-text-highlight.css',
+  tag: 'awesome-lively-text',
+  styleUrl: 'awesome-lively-text.css',
   shadow: true,
 })
-export class AwesomeTextHighlight implements ComponentInterface {
+export class AwesomeLivelyText implements ComponentInterface {
   @State() textSegments: TextSegment[];
 
-  /**
-   *
-   */
   @Prop() text: string;
 
-  /**
-   *
-   */
   @Prop() textSegmentMatchRegExp = /([\w-]+|\s+|[^\w-\s])/g;
 
-  /**
-   *
-   */
   @Event() textSegmentsGenerated: EventEmitter<TextSegment[]>;
 
   componentWillRender() {
